@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.b4cc1d81.chunk.css",
-    "main.js": "/static/js/main.59c9d8a9.chunk.js",
-    "main.js.map": "/static/js/main.59c9d8a9.chunk.js.map",
+    "main.css": "/static/css/main.bd5700d1.chunk.css",
+    "main.js": "/static/js/main.9369502f.chunk.js",
+    "main.js.map": "/static/js/main.9369502f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.0f5fbb80.js",
     "runtime-main.js.map": "/static/js/runtime-main.0f5fbb80.js.map",
     "static/css/2.9aaab401.chunk.css": "/static/css/2.9aaab401.chunk.css",
-    "static/js/2.b7f45377.chunk.js": "/static/js/2.b7f45377.chunk.js",
-    "static/js/2.b7f45377.chunk.js.map": "/static/js/2.b7f45377.chunk.js.map",
+    "static/js/2.c31f8c37.chunk.js": "/static/js/2.c31f8c37.chunk.js",
+    "static/js/2.c31f8c37.chunk.js.map": "/static/js/2.c31f8c37.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.9aaab401.chunk.css.map": "/static/css/2.9aaab401.chunk.css.map",
-    "static/css/main.b4cc1d81.chunk.css.map": "/static/css/main.b4cc1d81.chunk.css.map",
-    "static/js/2.b7f45377.chunk.js.LICENSE.txt": "/static/js/2.b7f45377.chunk.js.LICENSE.txt",
+    "static/css/main.bd5700d1.chunk.css.map": "/static/css/main.bd5700d1.chunk.css.map",
+    "static/js/2.c31f8c37.chunk.js.LICENSE.txt": "/static/js/2.c31f8c37.chunk.js.LICENSE.txt",
     "static/media/Index.scss": "/static/media/LuloBold.59ba992d.woff2",
     "static/media/analysis.f8cc950f.svg": "/static/media/analysis.f8cc950f.svg",
     "static/media/b1.9e825225.png": "/static/media/b1.9e825225.png",
@@ -24,6 +24,7 @@
     "static/media/footer-logo.c712477b.png": "/static/media/footer-logo.c712477b.png",
     "static/media/logo.9dd33821.png": "/static/media/logo.9dd33821.png",
     "static/media/logo_header.bc934ecb.png": "/static/media/logo_header.bc934ecb.png",
+    "static/media/new_logo.2ba94ee7.png": "/static/media/new_logo.2ba94ee7.png",
     "static/media/phone-example.f42f0287.png": "/static/media/phone-example.f42f0287.png",
     "static/media/qrcode.18dfb582.png": "/static/media/qrcode.18dfb582.png",
     "static/media/index.scss": "/static/media/quicksand.92e1d0f3.ttf",
@@ -42,8 +43,8 @@
   "entrypoints": [
     "static/js/runtime-main.0f5fbb80.js",
     "static/css/2.9aaab401.chunk.css",
-    "static/js/2.b7f45377.chunk.js",
-    "static/css/main.b4cc1d81.chunk.css",
-    "static/js/main.59c9d8a9.chunk.js"
+    "static/js/2.c31f8c37.chunk.js",
+    "static/css/main.bd5700d1.chunk.css",
+    "static/js/main.9369502f.chunk.js"
   ]
 }
