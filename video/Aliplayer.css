@@ -78,11 +78,22 @@ html,body{
   background-position: 4px 50% !important;
 }
 #videoContainer .prism-controlbar {
-  height: 80px;
+  display: block!important;
+  height: 90px;
+}
+#videoContainer .prism-progress-cursor{
+  display: block!important;
+  top: -15px!important;
+  width: 40px;
+  height: 40px;
+}
+#videoContainer .prism-progress-cursor img{
+  width: 40px;
+  height: 40px;
 }
 #videoContainer .prism-progress {
-  bottom: 80px !important;
-  height: 3px;
+  bottom: 90px !important;
+  height: 8px;
 }
 #videoContainer .prism-progress .prism-progress-played {
   background-color: #fff !important;
@@ -96,6 +107,7 @@ html,body{
 #videoContainer .prism-play-btn {
   width: 50px;
   height: 50px;
+  margin-top: 20px!important;
   background-size: 100% 100% !important;
 }
 #videoContainer .prism-fullscreen-btn {
@@ -103,6 +115,7 @@ html,body{
   height: 50px;
   margin-right: 40px !important;
   background-size: 100% 100% !important;
+  margin-top: 18px!important;
 }
 #videoContainer .volume-icon {
   background-size: 100% 100% !important;
@@ -113,7 +126,7 @@ html,body{
 }
 #videoContainer .prism-time-display {
   font-size: 24px;
-  margin-top: 20px !important;
+  margin-top: 25px !important;
 }
 #videoContainer .prism-time-display .current-time {
   color: #fefefe;
@@ -121,7 +134,8 @@ html,body{
 #videoContainer .prism-volume {
   display: flex;
   align-items: center;
-  margin-top: 15px!important;
+  margin-top: 20px!important;
+  margin-left: 20px!important;
 }
 #videoContainer .prism-volume .volume-icon{
   width: 50px;
@@ -137,7 +151,7 @@ html,body{
   margin-top: 0px;
   outline: 0;
   background-color: transparent;
-  width: 200px;
+  width: 150px;
   border-radius: 10px;
 }
 #videoContainer .volume-range::-webkit-slider-thumb {
@@ -163,7 +177,7 @@ html,body{
 }
 
 #videoContainer .quality-components {
-  margin-top: 20px;
+  margin-top: 25px;
   font-size: 30px!important;
   margin-right: 10px;
 }
@@ -228,6 +242,9 @@ html,body{
 }
 #videoContainer .play-jump {
   color: #4285f4 !important;
+}
+#videoContainer .quality-modal{
+  font-size:30px!important;
 }
 #videoContainer .vip_limit_close {
   text-align: center;

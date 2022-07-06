@@ -17,6 +17,7 @@
     src="https://g.alicdn.com/de/prismplayer/2.9.21/aliplayer-min.js"></script>
   <!-- 请下载之后使用 -->
   <script type="text/javascript" charset="utf-8" src="./aliplayercomponents.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./images.js"></script>
 
 </head>
 
@@ -143,9 +144,9 @@
         let tip = document.querySelector('.preview-component-tip')
         let tipText = tip.innerHTML.replace("， ", '，')
         tip.innerHTML = tipText;
-        // fullScreen.style.background = `url(${Icon_Full_Screen}) no-repeat`;
-        // volumeIcon.style.background = `url(${Icon_Volume}) no-repeat`;
-        // pauseIcon.style.background = `url(${Icon_Pause}) no-repeat`;
+        fullScreen.style.background = `url(${Icon_Full_Screen}) no-repeat`;
+        volumeIcon.style.background = `url(${Icon_Volume}) no-repeat`;
+        pauseIcon.style.background = `url(${Icon_Pause}) no-repeat`;
         let volume = document.querySelector('.prism-volume')
         let time = document.querySelector('.prism-time-display')
         let controller = document.querySelector('.prism-controlbar')
@@ -155,19 +156,19 @@
         slider.setAttribute('value', '100')
         slider.style.display = 'none';
 
-        volumeIcon.addEventListener('click', () => {
-          let val = slider.getAttribute('value');
-          if (val == '0') {
-            player.setVolume(1);
-            slider.setAttribute('value', '100');
-            volumeIcon.style.background = `url(${Icon_Volume}) no-repeat`;
-          } else {
-            volumeIcon.style.background = `url(${Icon_Volume_Off}) no-repeat`;
-            player.setVolume(0);
-            slider.setAttribute('value', '0');
-          }
+        // volumeIcon.addEventListener('click', () => {
+        //   let val = slider.getAttribute('value');
+        //   if (val == '0') {
+        //     player.setVolume(1);
+        //     slider.setAttribute('value', '100');
+        //     volumeIcon.style.background = `url(${Icon_Volume}) no-repeat`;
+        //   } else {
+        //     volumeIcon.style.background = `url(${Icon_Volume_Off}) no-repeat`;
+        //     player.setVolume(0);
+        //     slider.setAttribute('value', '0');
+        //   }
 
-        })
+        // })
 
         volume?.addEventListener('click', () => {
           slider.style.display =slider.style.display == 'block' ?'none' :'block';
