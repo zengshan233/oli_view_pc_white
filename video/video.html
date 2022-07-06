@@ -17,8 +17,6 @@
     src="https://g.alicdn.com/de/prismplayer/2.9.21/aliplayer-min.js"></script>
   <!-- 请下载之后使用 -->
   <script type="text/javascript" charset="utf-8" src="./aliplayercomponents.min.js"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-188321425-1"></script>
 
 </head>
 
@@ -29,14 +27,15 @@
   <script type="text/javascript">
     const { source, tryminutes, isMember, price } = {
       source: {
-        AUTO: "https://video.olicreater.com/a36d08929369444db012a13e3b1db0e1/ac011869ba114d37b35d3493679eabcf.m3u8",
-        FD: "https://video.olicreater.com/a36d08929369444db012a13e3b1db0e1/video/ac011869ba114d37b35d3493679eabcf-9a422fafa7f2a4f9a33ae317197f969f-video-fd.m3u8",
-        LD: "https://video.olicreater.com/a36d08929369444db012a13e3b1db0e1/video/ac011869ba114d37b35d3493679eabcf-508d42956969de08172258d03efdcb2e-video-ld.m3u8",
-        SD: "https://video.olicreater.com/a36d08929369444db012a13e3b1db0e1/video/ac011869ba114d37b35d3493679eabcf-3490496c4c3ad33d831f1d787f440457-video-sd.m3u8",
+        AUTO: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+        FD: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+        LD: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+        SD: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
 
       }, tryminutes: -1, isMember: false, price: '0'
     };
-
+    let videoContainer=document.getElementById('videoContainer');
+    videoContainer.style.height=`${document.body.clientWidth * 9 /16}px`
     // const [visible, setVisible] = useState(false);
 
     var player;
@@ -170,11 +169,8 @@
 
         })
 
-        volume?.addEventListener('mouseover', () => {
-          slider.style.display = 'block';
-        })
-        volume?.addEventListener('mouseout', () => {
-          slider.style.display = 'none';
+        volume?.addEventListener('click', () => {
+          slider.style.display =slider.style.display == 'block' ?'none' :'block';
         })
         slider.addEventListener("input", (e) => {
           e.pre
