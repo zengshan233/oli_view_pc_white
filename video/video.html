@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="./favicon.ico" />
+  <title>傲利观点</title>
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="keywords" content="金融、投资、软件,澳股，美股，股市，绩优股，炒股，赚钱，炒股app，基金，期货，股票，外汇，外汇交易，澳洲股票市场">
+  <meta name="description"
+    content="Oli View is designed to help investors thoroughly understand the latest market news and assist investors to avoid making inappropriate investment decisions because of outdated informations. Oli Research also releases daily exclusive views and insights on the global financial market or conduct comprehensive research and in-depth analysis on multiple hot topics and industries.">
+  <link rel="apple-touch-icon" href="./logo192.png" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.21/skins/default/aliplayer-min.css" />
+  <link rel="stylesheet" href="./Aliplayer.css" />
+  <script type="text/javascript" charset="utf-8"
+    src="https://g.alicdn.com/de/prismplayer/2.9.21/aliplayer-min.js"></script>
+  <!-- 请下载之后使用 -->
+  <script type="text/javascript" charset="utf-8" src="./public/js/aliplayercomponents.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-188321425-1"></script>
+
+</head>
+
+<body>
+  <div id="videoContainer">
+
+  </div>
+  <script type="text/javascript">
+    const { source, tryminutes, isMember, price } = {
+      source: {
+        AUTO: "https://video.olicreater.com/a36d08929369444db012a13e3b1db0e1/ac011869ba114d37b35d3493679eabcf.m3u8",
+        FD: "https://video.olicreater.com/a36d08929369444db012a13e3b1db0e1/video/ac011869ba114d37b35d3493679eabcf-9a422fafa7f2a4f9a33ae317197f969f-video-fd.m3u8",
+        LD: "https://video.olicreater.com/a36d08929369444db012a13e3b1db0e1/video/ac011869ba114d37b35d3493679eabcf-508d42956969de08172258d03efdcb2e-video-ld.m3u8",
+        SD: "https://video.olicreater.com/a36d08929369444db012a13e3b1db0e1/video/ac011869ba114d37b35d3493679eabcf-3490496c4c3ad33d831f1d787f440457-video-sd.m3u8",
+
+      }, tryminutes: -1, isMember: false, price: '0'
+    };
+
+    // const [visible, setVisible] = useState(false);
+
+    var player;
+    let ready = false;
+    let isLogin = true;
+    let script = document.createElement('script');
+    script.id = "endPreviewTemplate";
+    script.type = "text/template";
+    let isCharge = parseFloat(price) > 0;
+    // let topText = isLogin ? translate(`creator.myVideos.${isCharge ? (isMember ? 53 : 47) : 54}`) : translate(`creator.myVideos.55`);
+    let topText = '??????'
+    let btn1 = isMember && isLogin ? `<span class="price vip">VIP</span>` : `<span></span>`;
+    let btn2 = isLogin ? `<span></span>` : `<span class="price login">Sign in</span>`;
+    let btn3 = price == '0' || !isLogin ? `<span></span>` : `<span class="price buy">$112</span>`
+    let icon = `<img src='' />`
+    script.innerHTML = `
+            <div class="video-pay" >
+                  ${icon}
+            <h1> ${topText}</h1>
+            <div class="pay-area">
+                   ${btn1}
+                   ${btn2}
+                   ${btn3}
+                </div>
+              <div class="vip_limit_close"><img src='' /><span>${true ? 'Retry' : '重新试看'}</span></div>
+        </div >`;
+    document.body.appendChild(script);
+    let tryBtn = '';
+    let prefix = true ? 'please' : '请';
+    let or = true ? 'or' : '或'
+    if (isLogin) {
+      if (isMember) {
+        tryBtn = isCharge ? `${prefix} <a class="subscribe">asdasdasd</a> ${or} <span class="btn purchase">asdsadasd</span> adasdasd  ` : `${prefix} <a class="subscribe">asdasdas</a> asdasdasdas`;
+      } else {
+        tryBtn = `${prefix} <span class="btn purchase">asdasdasd</span>asdasdasd   `;
+      }
+    } else {
+      // if (isMember) {
+      //     tryBtn = `<a>${translate('home.video.o')}</a> ${translate('home.video.p')} ${translate('home.video.q')} <span class="btn">${translate('mine.login.h')}</span>`;
+      // } else {
+      tryBtn = `${prefix} <span class="btn retry-login">Sign in</span> asdasdasd `;
+      // }
+    }
+
+    let components = [{
+      name: 'QualityComponent',
+      type: window.AliPlayerComponent.QualityComponent,
+    },
+    {
+      name: 'MemoryPlayComponent',
+      type: window.AliPlayerComponent.MemoryPlayComponent,
+    }, {
+      name: 'PreviewVodComponent',
+      type: window.AliPlayerComponent.PreviewVodComponent,
+      args: [tryminutes == -1 ? 0 : tryminutes * 60, '#endPreviewTemplate', tryBtn]
+    }];
+    let autoKey = true ? 'Auto' : '自动';
+    let sourceJsonString = JSON.stringify(source).replace("AUTO", autoKey);
+    player = new (window.Aliplayer)({
+      //创建dom元素的id:
+      id: 'videoContainer',
+      //视频播放器的宽度
+      width: '100%',
+      //是否自动播放
+      autoplay: true,
+      rePlay: false,
+      source: sourceJsonString,
+      // source:'https://video.olicreater.com/customerTrans/ba72c38e2012aef6fe131611f84630a1/643e5a2-181b9c320a7-0014-56de-9fa-dbbb8.mp4',
+      qualitySort: 'asc',
+      language: true ? "en-us" : "zh-cn",
+      components: components,
+      skinLayout: [
+        { name: "bigPlayButton", align: "blabs", x: 30, y: 80 },
+        {
+          name: "H5Loading", align: "cc"
+        },
+        { name: "errorDisplay", align: "tlabs", x: 0, y: 0 },
+        { name: "infoDisplay" },
+        { name: "tooltip", align: "blabs", x: 0, y: 56 },
+        { name: "thumbnail" },
+        {
+          name: "controlBar", align: "blabs", x: 0, y: 0,
+          children: [
+            { name: "progress", align: "blabs", x: 0, y: 44 },
+            { name: "playButton", align: "tl", x: 15, y: 12 },
+            { name: "volume", align: "tl", x: 10, y: 10 },
+            { name: "timeDisplay", align: "tl", x: 20, y: 7 },
+            { name: "fullScreenButton", align: "tr", x: 10, y: 12 },
+          ]
+        }
+      ]
+    }, function (player) {
+      player.on('sourceloaded', function (params) {
+        var paramData = params.paramData
+        var desc = paramData.desc
+        var definition = paramData.definition
+        if (source['AUTO']) {
+          player.getComponent('QualityComponent').setCurrentQuality(autoKey, autoKey)
+        } else {
+          player.getComponent('QualityComponent').setCurrentQuality(desc, definition)
+        }
+        let fullScreen = document.querySelector('.prism-fullscreen-btn')
+        let pauseIcon = document.querySelector('.prism-play-btn')
+        let volumeIcon = document.querySelector('.volume-icon')
+        let tip = document.querySelector('.preview-component-tip')
+        let tipText = tip.innerHTML.replace("， ", '，')
+        tip.innerHTML = tipText;
+        // fullScreen.style.background = `url(${Icon_Full_Screen}) no-repeat`;
+        // volumeIcon.style.background = `url(${Icon_Volume}) no-repeat`;
+        // pauseIcon.style.background = `url(${Icon_Pause}) no-repeat`;
+        let volume = document.querySelector('.prism-volume')
+        let time = document.querySelector('.prism-time-display')
+        let controller = document.querySelector('.prism-controlbar')
+        let slider = document.createElement('input');
+        slider.setAttribute('type', 'range')
+        slider.setAttribute('class', 'volume-range')
+        slider.setAttribute('value', '100')
+        slider.style.display = 'none';
+
+        volumeIcon.addEventListener('click', () => {
+          let val = slider.getAttribute('value');
+          if (val == '0') {
+            player.setVolume(1);
+            slider.setAttribute('value', '100');
+            volumeIcon.style.background = `url(${Icon_Volume}) no-repeat`;
+          } else {
+            volumeIcon.style.background = `url(${Icon_Volume_Off}) no-repeat`;
+            player.setVolume(0);
+            slider.setAttribute('value', '0');
+          }
+
+        })
+
+        volume?.addEventListener('mouseover', () => {
+          slider.style.display = 'block';
+        })
+        volume?.addEventListener('mouseout', () => {
+          slider.style.display = 'none';
+        })
+        slider.addEventListener("input", (e) => {
+          e.pre
+          let pecent = e.target.value / 100;
+          player.setVolume(pecent);
+          let background = volumeIcon.style.background;
+          let icon = `url("${Icon_Volume}") no-repeat`;
+          if (pecent == 0) {
+            volumeIcon.style.background = `url(${Icon_Volume_Off}) no-repeat`;
+          } else if (background != icon) {
+            volumeIcon.style.background = icon;
+          }
+        })
+        volume?.appendChild(slider);
+      });
+      player.on('play', function () {
+        let playingIcon = document.querySelector('.prism-play-btn.playing')
+        playingIcon.style.background = `url(${Icon_Play}) no-repeat`
+      })
+      player.on('pause', function () {
+        let pauseIcon = document.querySelector('.prism-play-btn')
+        pauseIcon.style.background = `url(${Icon_Pause}) no-repeat`;
+      })
+      player.on('ready', function (params) {
+        if (!ready) {
+          var parentNode = document.querySelector('.quality-list');
+          var childList = [].slice.apply(parentNode.children).reverse();
+          var list = childList.filter((c) => {
+            return c.innerText != autoKey;
+          })
+          var auto = childList.find((c) => {
+            return c.innerText == autoKey;
+          })
+          list.reduce((x, y) => parentNode.appendChild(y));
+          parentNode.appendChild(auto);
+          let playingIcon = document.querySelector('.prism-play-btn.playing')
+          playingIcon.style.background = `url(${Icon_Play}) no-repeat`;
+          let loginBtn = document.querySelector('.retry-login')
+          let purchase = document.querySelector('.purchase');
+          let subscribe = document.querySelector('.subscribe');
+          let closeBtn = document.querySelector('.preview-vod-close');
+          let preview = document.querySelector('.preview-component-tip');
+          if (closeBtn)
+            closeBtn?.addEventListener('click', () => {
+              preview.style.display = 'none'
+            })
+          if (subscribe)
+            subscribe?.addEventListener('click', () => {
+              GlobalConfig.history.push('/subscribe')
+            })
+          if (purchase)
+            purchase?.addEventListener('click', () => {
+              stripeStore.objectid = props.objectid;
+              stripeStore.ordertype = props.ordertype;
+              stripeStore.pay(props.price);
+              // setVisible(true);
+            })
+          if (loginBtn)
+            loginBtn.addEventListener('click', () => {
+              loginStore.LoginModel = LoginModel.login;
+              userStore.loginModalVisible = true;
+            })
+        }
+        var qualityModal = document.querySelector('.quality-modal');
+        ready = true
+        if (qualityModal)
+          qualityModal.style.display = 'none';
+      });
+      player.on('ended', function (params) {
+        if (tryminutes == -1) {
+          onEnd();
+        }
+
+        let tip = document.querySelector('.preview-component-tip')
+        let close = document.querySelector('.vip_limit_close');
+
+        close?.addEventListener('click', () => {
+          player.seek(0);
+          player.replay();
+          player.getComponent('PreviewVodComponent').closePreviewLayer()
+        })
+        tip.style.display = 'none';
+      });
+
+      var vip_btn = document.querySelector('.vip')
+      if (vip_btn)
+        vip_btn.addEventListener('click', function () {
+          GlobalConfig.history.push('/subscribe');
+        })
+
+      var buy_btn = document.querySelector('.buy')
+      if (buy_btn)
+        buy_btn.addEventListener('click', function () {
+          stripeStore.objectid = props.objectid;
+          stripeStore.ordertype = props.ordertype;
+          stripeStore.pay(props.price);
+          // setVisible(true);
+        })
+
+
+      var login_btn = document.querySelector('.login')
+      if (login_btn)
+        login_btn.addEventListener('click', function () {
+          loginStore.LoginModel = LoginModel.login;
+          userStore.loginModalVisible = true;
+        })
+    });
+  </script>
+</body>
+
+</html>
